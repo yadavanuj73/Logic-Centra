@@ -8,6 +8,7 @@ const HomePage = lazy(() => import('../pages/Home'));
 const ServicesPage = lazy(() => import('../pages/Services'));
 const PortfolioPage = lazy(() => import('../pages/Portfolio'));
 const ContactPage = lazy(() => import('../pages/Contact'));
+const CompanyProfilePage = lazy(() => import('../pages/CompanyProfile'));
 
 function PageLoader() {
   return (
@@ -61,6 +62,14 @@ export function AppRoutes() {
                 element={
                   <PageTransition>
                     <PortfolioPage />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/company-profile"
+                element={
+                  <PageTransition>
+                    <CompanyProfilePage />
                   </PageTransition>
                 }
               />

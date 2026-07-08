@@ -105,7 +105,13 @@ function PortfolioGrid() {
                         )}
                         {featured.cta && (
                           <Button variant="primary" size="md" asChild>
-                            <Link to="/contact">{featured.cta}</Link>
+                            {featured.href ? (
+                              <a href={featured.href} target="_blank" rel="noopener noreferrer">
+                                {featured.cta}
+                              </a>
+                            ) : (
+                              <Link to="/contact">{featured.cta}</Link>
+                            )}
                           </Button>
                         )}
                       </div>
@@ -119,61 +125,69 @@ function PortfolioGrid() {
                 </div>
 
                 <div className="col-span-1 flex flex-col gap-6 lg:col-span-4">
-                  {rest.slice(0, 2).map((card) => (
-                    <div
-                      key={card.id}
-                      className={`relative overflow-hidden border border-[#e2e2e5] flex-1 group cursor-pointer ${card.bgClass ?? 'bg-[#e8e8eb]'}`}
-                    >
-                      <div className="relative flex min-h-[185px] flex-col items-start gap-2 p-6 overflow-hidden">
-                        <p className={`font-sans text-sm tracking-[0.70px] ${card.categoryClass ?? 'text-[#006d3d]'}`}>
-                          {card.category}
-                        </p>
-                        <h3 className={`font-heading text-2xl font-semibold ${card.textClass ?? 'text-[#00273d]'}`}>
-                          {card.title}
-                        </h3>
-                        <div
-                          className="absolute right-0 bottom-0 h-[140px] w-full bg-cover bg-right-bottom bg-no-repeat opacity-80 transition-transform duration-500 group-hover:scale-105"
-                          style={{ backgroundImage: `url(${card.image})` }}
-                          aria-hidden="true"
-                        />
-                      </div>
-                    </div>
-                  ))}
+                  {rest.slice(0, 2).map((card) => {
+                    const CardComponent = card.href ? 'a' : 'div';
+                    return (
+                      <CardComponent
+                        key={card.id}
+                        {...(card.href ? { href: card.href, target: '_blank', rel: 'noopener noreferrer' } : {})}
+                        className={`relative overflow-hidden border border-[#e2e2e5] flex-1 group cursor-pointer ${card.bgClass ?? 'bg-[#e8e8eb]'}`}
+                      >
+                        <div className="relative flex min-h-[185px] flex-col items-start gap-2 p-6 overflow-hidden">
+                          <p className={`font-sans text-sm tracking-[0.70px] ${card.categoryClass ?? 'text-[#006d3d]'}`}>
+                            {card.category}
+                          </p>
+                          <h3 className={`font-heading text-2xl font-semibold ${card.textClass ?? 'text-[#00273d]'}`}>
+                            {card.title}
+                          </h3>
+                          <div
+                            className="absolute right-0 bottom-0 h-[140px] w-full bg-cover bg-right-bottom bg-no-repeat opacity-80 transition-transform duration-500 group-hover:scale-105"
+                            style={{ backgroundImage: `url(${card.image})` }}
+                            aria-hidden="true"
+                          />
+                        </div>
+                      </CardComponent>
+                    );
+                  })}
                 </div>
               </div>
             )}
 
             {rest.length > 2 && (
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-                {rest.slice(2).map((card) => (
-                  <div
-                    key={card.id}
-                    className={`relative overflow-hidden border border-[#e2e2e5] group cursor-pointer ${card.bgClass ?? 'bg-[#e8e8eb]'}`}
-                  >
-                    <div className="relative flex min-h-[240px] flex-col items-start gap-2 p-6 overflow-hidden">
-                      <p className={`font-sans text-sm tracking-[0.70px] ${card.categoryClass ?? 'text-[#006d3d]'}`}>
-                        {card.category}
-                      </p>
-                      <h3 className={`font-heading text-2xl font-semibold ${card.textClass ?? 'text-[#00273d]'}`}>
-                        {card.title}
-                      </h3>
-                      {card.tags && (
-                        <div className="flex flex-wrap gap-2 mt-2">
-                          {card.tags.map((t) => (
-                            <span key={t} className="rounded-sm bg-white/20 px-2 py-1 font-sans text-[10px] font-bold tracking-[1px]">
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                      <div
-                        className="absolute right-0 bottom-0 h-[150px] w-full bg-cover bg-right-bottom bg-no-repeat opacity-80 transition-transform duration-500 group-hover:scale-105"
-                        style={{ backgroundImage: `url(${card.image})` }}
-                        aria-hidden="true"
-                      />
-                    </div>
-                  </div>
-                ))}
+                {rest.slice(2).map((card) => {
+                  const CardComponent = card.href ? 'a' : 'div';
+                  return (
+                    <CardComponent
+                      key={card.id}
+                      {...(card.href ? { href: card.href, target: '_blank', rel: 'noopener noreferrer' } : {})}
+                      className={`relative overflow-hidden border border-[#e2e2e5] group cursor-pointer ${card.bgClass ?? 'bg-[#e8e8eb]'}`}
+                    >
+                      <div className="relative flex min-h-[240px] flex-col items-start gap-2 p-6 overflow-hidden">
+                        <p className={`font-sans text-sm tracking-[0.70px] ${card.categoryClass ?? 'text-[#006d3d]'}`}>
+                          {card.category}
+                        </p>
+                        <h3 className={`font-heading text-2xl font-semibold ${card.textClass ?? 'text-[#00273d]'}`}>
+                          {card.title}
+                        </h3>
+                        {card.tags && (
+                          <div className="flex flex-wrap gap-2 mt-2">
+                            {card.tags.map((t) => (
+                              <span key={t} className="rounded-sm bg-white/20 px-2 py-1 font-sans text-[10px] font-bold tracking-[1px]">
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        <div
+                          className="absolute right-0 bottom-0 h-[150px] w-full bg-cover bg-right-bottom bg-no-repeat opacity-80 transition-transform duration-500 group-hover:scale-105"
+                          style={{ backgroundImage: `url(${card.image})` }}
+                          aria-hidden="true"
+                        />
+                      </div>
+                    </CardComponent>
+                  );
+                })}
               </div>
             )}
           </motion.div>

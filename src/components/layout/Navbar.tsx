@@ -43,10 +43,10 @@ export function Navbar() {
       <div className="flex w-full items-center justify-between gap-6 px-6 py-4 md:px-10 lg:px-12">
         <div className="flex-1 flex justify-start">
           <Link to="/" aria-label="Logic Centra home" className="shrink-0 flex items-center">
-            <img 
-              src="/assets/logic-logo.png" 
-              alt="Logic Centra Logo" 
-              className="h-10 w-auto object-contain" 
+            <img
+              src="/assets/logic-logo.png"
+              alt="Logic Centra Logo"
+              className="h-10 w-auto object-contain"
             />
           </Link>
         </div>

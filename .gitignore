@@ -26,3 +26,5 @@ dist-ssr
 .agents/
 context.md
 
+# Large Media & PDFs
+public/assets/pdfs/

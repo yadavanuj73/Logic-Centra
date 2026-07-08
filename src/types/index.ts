@@ -20,6 +20,7 @@ export interface PortfolioItem {
   bgClass?: string;
   textClass?: string;
   categoryClass?: string;
+  href?: string;
 }
 
 export interface ServiceItem {

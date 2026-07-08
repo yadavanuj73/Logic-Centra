@@ -39,7 +39,7 @@ export function AboutSection() {
             className="flex w-full justify-start lg:w-auto lg:justify-end shrink-0"
           >
             <Button variant="dark" size="md" className="px-8 py-4" asChild>
-              <Link to="/about">Learn More About Us</Link>
+              <Link to="/company-profile">Company Profile</Link>
             </Button>
           </motion.div>
         </div>

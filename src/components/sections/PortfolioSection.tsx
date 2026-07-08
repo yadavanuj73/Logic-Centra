@@ -54,7 +54,13 @@ export function PortfolioSection() {
                     className="group-hover:bg-[#005a33] transition-colors"
                     asChild
                   >
-                    <Link to="/portfolio">{featured.cta}</Link>
+                    {featured.href ? (
+                      <a href={featured.href} target="_blank" rel="noopener noreferrer">
+                        {featured.cta}
+                      </a>
+                    ) : (
+                      <Link to="/portfolio">{featured.cta}</Link>
+                    )}
                   </Button>
                 </div>
                 <div
@@ -67,33 +73,39 @@ export function PortfolioSection() {
           </motion.div>
 
           <div className="col-span-1 flex min-h-full flex-col gap-6 lg:col-span-4">
-            {secondary.map((card, i) => (
-              <motion.div
-                key={card.id}
-                initial={{ opacity: 0, x: 30 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-                className="flex-1"
-              >
-                <div className={`relative overflow-hidden border border-[#e2e2e5] ${card.bgClass} group cursor-pointer`}>
-                  <div className="relative flex min-h-[200px] flex-col items-start gap-2 p-6 sm:p-8 overflow-hidden">
-                    <div className="relative z-10 flex w-full flex-col items-start gap-2">
-                      <p className={`font-sans text-sm font-normal leading-4 tracking-[0.70px] ${card.categoryClass}`}>
-                        {card.category}
-                      </p>
-                      <h3 className={`font-heading text-2xl font-semibold leading-8 ${card.textClass}`}>
-                        {card.title}
-                      </h3>
+            {secondary.map((card, i) => {
+              const CardComponent = card.href ? 'a' : 'div';
+              return (
+                <motion.div
+                  key={card.id}
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+                  className="flex-1"
+                >
+                  <CardComponent
+                    {...(card.href ? { href: card.href, target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    className={`relative block overflow-hidden border border-[#e2e2e5] ${card.bgClass} group cursor-pointer h-full`}
+                  >
+                    <div className="relative flex min-h-[200px] flex-col items-start gap-2 p-6 sm:p-8 overflow-hidden">
+                      <div className="relative z-10 flex w-full flex-col items-start gap-2">
+                        <p className={`font-sans text-sm font-normal leading-4 tracking-[0.70px] ${card.categoryClass}`}>
+                          {card.category}
+                        </p>
+                        <h3 className={`font-heading text-2xl font-semibold leading-8 ${card.textClass}`}>
+                          {card.title}
+                        </h3>
+                      </div>
+                      <div
+                        className="absolute right-0 bottom-0 h-[160px] w-full bg-cover bg-right-bottom bg-no-repeat opacity-80 transition-transform duration-500 group-hover:scale-105"
+                        style={{ backgroundImage: `url(${card.image})` }}
+                        aria-hidden="true"
+                      />
                     </div>
-                    <div
-                      className="absolute right-0 bottom-0 h-[160px] w-full bg-cover bg-right-bottom bg-no-repeat opacity-80 transition-transform duration-500 group-hover:scale-105"
-                      style={{ backgroundImage: `url(${card.image})` }}
-                      aria-hidden="true"
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                  </CardComponent>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 
