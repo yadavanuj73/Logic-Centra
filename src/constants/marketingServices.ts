@@ -1,0 +1,175 @@
+import type { MarketingServicePackage } from '../types';
+
+export const MARKETING_SERVICE_PACKAGES: MarketingServicePackage[] = [
+  {
+    id: 'complete-digital-marketing',
+    badge: 'FULL 360° GROWTH',
+    title: 'Complete Digital Marketing',
+    subtitle: 'All-in-one digital marketing solution for leads & visibility',
+    price: '₹20,000',
+    period: '/ month',
+    description:
+      'A complete end-to-end digital marketing solution for businesses looking to build a strong online presence, rank high on search engines, and generate consistent qualified leads.',
+    highlights: ['10 SEO Keywords', 'Full SMO Suite', 'Meta & Google Ads', 'Monthly Performance Reports'],
+    icon: 'Rocket',
+    popular: true,
+    category: 'complete',
+    features: [
+      {
+        sectionTitle: 'Search Engine Optimization (SEO) (10 Keywords)',
+        items: [
+          'Keyword Research & Analysis',
+          'Keyword Finalization & Mapping',
+          'Website SEO Audit',
+          'Google Analytics Setup & Review',
+          'Google Search Console Setup',
+          'On-Page SEO Optimization',
+          'Meta Title & Description Optimization',
+          'H1 Tag & Image Optimization',
+          'Content Optimization & Internal Linking',
+          'XML Sitemap Creation & Submission',
+          'Robots.txt & Canonical Tag Implementation',
+          'Website Speed Recommendations & Broken Link Analysis',
+          'Local SEO & Google Business Profile Optimization',
+          'Schema Markup Implementation',
+          'Website Health Monitoring & Crawl Error Analysis',
+          'Duplicate Content Review & Monthly SEO Performance Reports',
+        ],
+      },
+      {
+        sectionTitle: 'Social Media Optimization (SMO)',
+        items: [
+          'Social Media Strategy & Profile Optimization',
+          'Creative Post Designing & Regular Content Posting',
+          'Caption & Hashtag Research',
+          'Story Publishing & Audience Engagement Guidance',
+          'Monthly Social Media Performance Report',
+        ],
+      },
+      {
+        sectionTitle: 'Performance Marketing Management',
+        items: [
+          'Meta Ads Management (Facebook & Instagram)',
+          'Google Ads Management (if applicable)',
+          'Campaign Strategy & Audience Research',
+          'Weekly Campaign Optimization & A/B Testing',
+          'Lead Quality Optimization & Monthly ROI Reporting',
+        ],
+      },
+    ],
+    notes: ['Note: Advertisement spend is not included. The advertising budget will be funded directly by the client.'],
+  },
+  {
+    id: 'performance-marketing-only',
+    badge: 'PAID ADS & LEAD GEN',
+    title: 'Performance Marketing Only',
+    subtitle: 'Targeted paid ad campaigns to turn interest into revenue',
+    price: '₹12,000',
+    period: '/ month',
+    description:
+      'Ideal for businesses already running advertisements or planning to generate consistent high-intent leads through targeted paid ad campaigns.',
+    highlights: ['Meta Ads Account Management', 'Campaign Setup & Conversion Tracking', 'A/B Testing & Weekly Optimization', 'Monthly ROI Reporting'],
+    icon: 'Target',
+    popular: false,
+    category: 'ads',
+    features: [
+      {
+        sectionTitle: 'Included Services & Capabilities',
+        items: [
+          'Meta Ads Account Management (Facebook & Instagram)',
+          'Campaign Setup & Funnel Architecture',
+          'Conversion Tracking & Meta Pixel Integration',
+          'In-Depth Audience Research & Retargeting',
+          'Weekly Campaign Optimization & Budget Scaling',
+          'Continuous A/B Creative & Copy Testing',
+          'Lead Quality Auditing & Optimization',
+          'Comprehensive Monthly Performance & ROI Reporting',
+        ],
+      },
+    ],
+    notes: ['Ad Budget: Paid separately by the client directly to advertising platforms.'],
+  },
+  {
+    id: 'seo-packages',
+    badge: 'ORGANIC RANKINGS & AUDIT',
+    title: 'SEO Packages',
+    subtitle: 'Tiered organic search optimization plans to rank top on Google',
+    price: 'From ₹15,000',
+    period: '/ month',
+    description:
+      'Structured organic search optimization packages designed to boost domain authority, drive high-intent traffic, and capture top search positions on Google.',
+    highlights: ['20 to 50 Keywords', 'On-Page & Technical SEO', 'Local SEO & Schema', 'Off-Page Submissions'],
+    icon: 'Search',
+    popular: false,
+    category: 'seo',
+    features: [
+      {
+        sectionTitle: 'Initial Research & Account Setup',
+        items: [
+          'Keyword Research, Finalization & Mapping',
+          'Check Website for Google Penalty',
+          'Google Analytics & Google Webmaster Account Setup',
+          'Google Business Profile Listing Creation & Optimization',
+        ],
+      },
+      {
+        sectionTitle: 'On-Page & Technical SEO Activities',
+        items: [
+          'URL Structure Review & SEO Friendly Recommendations',
+          'Unique Meta Title, Description & H1 Tags Audit',
+          'Image & Content Analysis & Optimization',
+          'Canonical, Robots.txt & XML Sitemap Creation & Submission',
+          'Website Load Time & Broken Link Rectification',
+        ],
+      },
+      {
+        sectionTitle: 'Local SEO, Off-Page & Website Health',
+        items: [
+          'Schema Implementation (Logo, Address, Breadcrumbs, Products)',
+          'Local Page Creation & Business Listing Submissions',
+          'Article & Blog Writing & Submission',
+          'Guest Posts, Classifieds & Social Bookmarking',
+          'Bi-weekly Website Crawl & Error Resolution',
+        ],
+      },
+    ],
+    seoTiers: [
+      { name: 'Starter', keywords: 20, monthlyPrice: '₹15,000' },
+      { name: 'Growth', keywords: 30, monthlyPrice: '₹19,290', popular: true },
+      { name: 'Scale', keywords: 50, monthlyPrice: '₹26,500' },
+    ],
+    notes: ['SEO rankings depend on competition and website quality. We follow strict White-Hat practices.'],
+  },
+  {
+    id: 'custom-marketing-strategy',
+    badge: 'ENTERPRISE ADVISORY',
+    title: 'Custom Marketing Strategy',
+    subtitle: 'ROI-focused marketing strategies tailored for your business scale',
+    price: 'Custom',
+    period: ' Quote',
+    description:
+      'Dedicated marketing team and customized growth strategy engineered to maximize ROI, elevate brand authority, and scale customer acquisition.',
+    highlights: ['Dedicated Account Manager', 'Custom Growth Roadmap', 'White-Hat Growth Practices', 'Transparent Reporting'],
+    icon: 'BarChart3',
+    popular: false,
+    category: 'strategy',
+    features: [
+      {
+        sectionTitle: 'Why Partner with Logic Centra?',
+        items: [
+          'Experienced Digital Marketing Specialist Team',
+          'ROI-Focused Growth & Funnel Marketing Strategies',
+          'Transparent Monthly Reporting & Analytics',
+          'Strict White Hat SEO & Compliance Practices',
+          'Dedicated Account Manager for Seamless Execution',
+          'Regular Campaign Optimization & A/B Testing',
+          'Customized Marketing Strategies Tailored to Your Niche',
+        ],
+      },
+    ],
+    notes: [
+      'Payment Terms: Monthly Advance Billing',
+      'Minimum Engagement: 3 Months recommended for maximum ROI',
+    ],
+  },
+];

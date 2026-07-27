@@ -58,3 +58,31 @@ export interface ContactFormData {
   interest: string;
   message: string;
 }
+
+export interface SeoPlanTier {
+  name: string;
+  keywords: number;
+  monthlyPrice: string;
+  popular?: boolean;
+}
+
+export interface MarketingServicePackage {
+  id: string;
+  badge: string;
+  title: string;
+  subtitle: string;
+  price: string;
+  period: string;
+  description: string;
+  highlights: string[];
+  icon: string;
+  popular?: boolean;
+  category: 'complete' | 'ads' | 'seo' | 'strategy';
+  features: {
+    sectionTitle: string;
+    items: string[];
+  }[];
+  seoTiers?: SeoPlanTier[];
+  notes?: string[];
+}
+

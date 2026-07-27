@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import { ArrowRight, Smartphone, Globe, TrendingUp, Cloud, Layers, Shield, CheckCircle2, type LucideIcon } from 'lucide-react';
 import { Button } from '../../components/common/Button';
 import { SectionLabel } from '../../components/common/SectionLabel';
+import { MarketingServicesSlider } from '../../components/sections/MarketingServicesSlider';
 import { SERVICES } from '../../constants';
 
 const iconMap: Record<string, LucideIcon> = {
@@ -231,6 +232,7 @@ export default function ServicesPage() {
   return (
     <>
       <HeroBlock />
+      <MarketingServicesSlider />
       <ServicesGrid />
       <ProcessSection />
       <WhyChooseSection />
