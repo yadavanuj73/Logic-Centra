@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
-import { ArrowRight, Smartphone, Globe, TrendingUp, Cloud, Layers, Shield, CheckCircle2, type LucideIcon } from 'lucide-react';
+import { ArrowRight, Smartphone, Globe, TrendingUp, Cloud, Layers, Shield, CheckCircle2, ChevronDown, Zap, type LucideIcon } from 'lucide-react';
 import { Button } from '../../components/common/Button';
 import { SectionLabel } from '../../components/common/SectionLabel';
 import { MarketingServicesSlider } from '../../components/sections/MarketingServicesSlider';
@@ -24,30 +24,205 @@ const processSteps = [
 ];
 
 function HeroBlock() {
+  const scrollToGrid = () => {
+    const el = document.getElementById('services-grid-section');
+    if (el) {
+      const headerHeight = 73;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section className="w-full bg-[#00273d] pt-32 pb-20 px-6 lg:px-16">
-      <div className="mx-auto max-w-screen-xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col items-start gap-4 max-w-2xl"
-        >
-          <SectionLabel color="green-light">OUR SERVICES</SectionLabel>
-          <h1 className="font-heading text-4xl font-bold leading-tight tracking-[-0.5px] text-white lg:text-5xl">
-            Strategic Technological<br />Ecosystems
-          </h1>
-          <p className="font-sans text-lg text-[#7fa8cb] leading-7 max-w-xl">
-            From concept to launch and beyond — we engineer digital products that scale with your ambitions.
-          </p>
-          <Button variant="primary" size="lg" className="mt-4" asChild>
-            <Link to="/contact">Get a Free Consultation</Link>
-          </Button>
-        </motion.div>
+    <section className="relative w-full bg-[#f4f7f9] pt-32 pb-24 px-6 lg:px-16 overflow-hidden border-b border-[#e2e2e5]">
+      {/* Background Decorative Animated Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,_rgba(0,109,61,0.08)_0%,_transparent_70%)] blur-2xl" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,_rgba(0,181,224,0.08)_0%,_transparent_70%)] blur-2xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(#006d3d_1px,transparent_1px)] [background-size:28px_28px] opacity-[0.06]" />
+      </div>
+
+      <div className="relative mx-auto max-w-screen-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Left Column: Typography & Call to Action */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-7 flex flex-col items-start gap-6 max-w-2xl"
+          >
+            {/* Animated Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="inline-flex items-center gap-2 rounded-full bg-[#006d3d]/10 px-4 py-1.5 border border-[#006d3d]/20"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#006d3d] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#006d3d]"></span>
+              </span>
+              <span className="font-sans text-xs font-bold tracking-wider text-[#006d3d] uppercase">
+                OUR SERVICES & ECOSYSTEMS
+              </span>
+            </motion.div>
+
+            {/* Main Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="font-heading text-4xl font-bold leading-[1.15] tracking-[-0.5px] text-[#00273d] lg:text-5xl"
+            >
+              Strategic Technological{' '}
+              <span className="bg-gradient-to-r from-[#006d3d] via-[#00874c] to-[#00b5e0] bg-clip-text text-transparent">
+                Ecosystems
+              </span>
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="font-sans text-lg text-[#42474d] leading-relaxed max-w-xl"
+            >
+              From concept to launch and beyond — we engineer high-performance mobile apps, web portals, SaaS platforms, and digital marketing strategies that scale with your ambitions.
+            </motion.p>
+
+            {/* Action Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-wrap items-center gap-4 pt-2"
+            >
+              <Button variant="primary" size="lg" className="shadow-lg shadow-[#006d3d]/20 hover:scale-[1.02] transition-transform" asChild>
+                <Link to="/contact">
+                  Get a Free Consultation <ArrowRight size={18} className="ml-1.5" />
+                </Link>
+              </Button>
+              
+              <button
+                type="button"
+                onClick={scrollToGrid}
+                className="inline-flex items-center gap-2 rounded-md bg-white border border-[#e2e2e5] px-6 py-3.5 font-sans text-sm font-semibold text-[#00273d] shadow-sm hover:border-[#006d3d]/40 hover:bg-[#f4f7f9] transition-all"
+              >
+                <span>Explore Solutions</span>
+                <ChevronDown size={16} className="text-[#006d3d]" />
+              </button>
+            </motion.div>
+
+            {/* Trust Highlights Row */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex flex-wrap items-center gap-6 pt-4 border-t border-[#e2e2e5] w-full text-xs font-semibold text-[#00273d]"
+            >
+              <div className="flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-[#006d3d]" />
+                <span>366+ Delivered Projects</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-[#006d3d]" />
+                <span>ISO 27001 Security</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-[#006d3d]" />
+                <span>24/7 Global Support</span>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column: Animated Interactive Floating Cards */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, x: 20 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="lg:col-span-5 relative flex justify-center lg:justify-end"
+          >
+            <div className="relative w-full max-w-[440px] space-y-4">
+              {/* Card 1: Mobile & Web Architecture */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                className="rounded-xl bg-white border border-[#e2e2e5] p-5 shadow-xl shadow-[#00273d]/5 hover:border-[#006d3d]/40 transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#006d3d]/10 text-[#006d3d]">
+                    <Smartphone size={22} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-heading text-sm font-bold text-[#00273d]">Mobile & Web Architecture</h4>
+                      <span className="font-stat text-xs font-extrabold text-[#006d3d]">99.9% Uptime</span>
+                    </div>
+                    <p className="font-sans text-xs text-[#42474d] mt-0.5">iOS, Android, React & Cloud Solutions</p>
+                    <div className="w-full bg-[#f4f7f9] h-1.5 rounded-full mt-2.5 overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: '92%' }}
+                        transition={{ duration: 1.2, delay: 0.5 }}
+                        className="bg-gradient-to-r from-[#006d3d] to-[#00b5e0] h-full rounded-full"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Card 2: Digital Growth & Performance Marketing */}
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                className="rounded-xl bg-white border border-[#e2e2e5] p-5 shadow-xl shadow-[#00273d]/5 hover:border-[#006d3d]/40 transition-all ml-4 sm:ml-8"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#00b5e0]/10 text-[#00b5e0]">
+                    <TrendingUp size={22} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-heading text-sm font-bold text-[#00273d]">Digital Marketing & SEO</h4>
+                      <span className="rounded-full bg-[#006d3d] px-2 py-0.5 font-sans text-[10px] font-bold text-white">
+                        +340% ROI
+                      </span>
+                    </div>
+                    <p className="font-sans text-xs text-[#42474d] mt-0.5">Organic SEO, Meta Ads & Paid Funnels</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Card 3: Cloud & Enterprise SaaS */}
+              <motion.div
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                className="rounded-xl bg-white border border-[#e2e2e5] p-5 shadow-xl shadow-[#00273d]/5 hover:border-[#006d3d]/40 transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#00273d]/10 text-[#00273d]">
+                    <Cloud size={22} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-heading text-sm font-bold text-[#00273d]">Cloud & SaaS Engineering</h4>
+                      <span className="flex items-center gap-1 font-sans text-xs font-semibold text-[#006d3d]">
+                        <Zap size={12} /> High Load
+                      </span>
+                    </div>
+                    <p className="font-sans text-xs text-[#42474d] mt-0.5">Microservices, AWS & Security Audits</p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 }
+
 
 function ServicesGrid() {
   const ref = useRef(null);
@@ -78,7 +253,7 @@ function ServicesGrid() {
   }, [location.search]);
 
   return (
-    <section ref={ref} className="w-full bg-white px-6 py-20 lg:px-16">
+    <section ref={ref} id="services-grid-section" className="w-full bg-white px-6 py-20 lg:px-16">
       <div ref={gridRef} className="mx-auto max-w-screen-xl">
         <motion.header
           initial={{ opacity: 0, y: 20 }}
